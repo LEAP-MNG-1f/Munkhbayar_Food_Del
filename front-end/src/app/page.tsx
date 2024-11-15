@@ -49,6 +49,7 @@ export default function Home() {
         <Card img="zurag" title="Hool" price={5500} />
         <p>Are you working ?</p>
         <p>Hello</p>
+        <p>world</p>
       </div>
     </div>
   );
