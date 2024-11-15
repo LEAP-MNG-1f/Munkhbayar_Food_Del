@@ -47,6 +47,7 @@ export default function Home() {
       <div>
         <Card img="zurag" title="Hool" price={5000} discount={20} />
         <Card img="zurag" title="Hool" price={5500} />
+        <p>Are you working ?</p>
       </div>
     </div>
   );
