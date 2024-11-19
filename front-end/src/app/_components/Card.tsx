@@ -4,6 +4,7 @@ type CardPropsType = {
   title: string;
   discount?: number;
   color?: "black" | "red";
+  
 };
 
 export const Card = (props: CardPropsType) => {
