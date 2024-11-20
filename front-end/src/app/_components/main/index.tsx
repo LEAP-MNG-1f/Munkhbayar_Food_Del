@@ -1,7 +1,7 @@
 import { Cookcard } from "../cards/card";
 import { Arrowright } from "../svg/arrowright";
 import { Staricon } from "../svg/starIcon";
-import { Mainsale } from "./mainsales";
+
 
 export const Main = () => {
   return (

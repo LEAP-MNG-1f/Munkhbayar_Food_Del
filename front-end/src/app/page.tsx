@@ -1,6 +1,6 @@
-import { Main } from "./_components/main";
 import { FastDelivery } from "./_components/fast_delivery";
 import { Greentwo } from "./_components/greenheader";
+import { Main } from "./_components/main";
 
 export default function Home() {
   return (
