@@ -1,6 +1,9 @@
 import { FastDelivery } from "./_components/fast_delivery";
 import { Greentwo } from "./_components/greenheader";
-import { Main } from "./_components/main";
+import { Dessert } from "./_components/main/dessert";
+import { Main } from "./_components/main/maincook";
+import { Mainsale } from "./_components/main/mainsales";
+import { Mainsalad } from "./_components/main/salad";
 
 export default function Home() {
   return (
@@ -8,6 +11,9 @@ export default function Home() {
       <Greentwo />
       <FastDelivery />
       <Main />
+      <Mainsale />
+      <Mainsalad />
+      <Dessert />
     </div>
   );
 }
