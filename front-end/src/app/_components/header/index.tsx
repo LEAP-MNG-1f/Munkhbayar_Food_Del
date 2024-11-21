@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { CustomizedDialogs } from "../icon/order";
 
 export const Header = () => {
   const router = useRouter();
@@ -33,10 +34,9 @@ export const Header = () => {
                   ХҮРГЭЛТИЙН БҮС
                 </div>
               </div>
-              <div className="flex justify-center items-center gap-10 font-medium ">
+              <div className="flex justify-center items-center gap-3 font-medium ">
                 <div className="flex justify-center items-center gap-3 hover:bg-slate-100 py-2 px-4 rounded-xl">
-                  <img src="./vector.svg" alt="" />
-                  <div className="flex justify-center items-center"> Сагс</div>
+                  <CustomizedDialogs />
                 </div>
                 <div className="flex justify-center items-center gap-3 hover:bg-slate-100 py-2 px-4 rounded-xl">
                   <img src="./vector1.svg" alt="" />
