@@ -1,8 +1,8 @@
-import { Frame } from "../svg/Frame";
+import { Frame } from "../homepage/svg/Frame";
 
 export const Footer = () => {
   return (
-    <div className="flex w-screen h-full">
+    <div className="flex w-full h-auto">
       <div
         className="flex w-full h-[800px] bg-[#18BA51]"
         style={{
@@ -11,20 +11,20 @@ export const Footer = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="flex flex-col justify-center items-center w-full gap-6">
-          <div className="flex justify-center items-center gap-3">
+        <div className="flex flex-col justify-center items-center w-full h-auto gap-10">
+          <div className="flex justify-center items-center gap-3 w-[80%]">
             <Frame />
             <div className="text-[#FFFFFF] font-bold text-2xl">
               Food Delivery
             </div>
           </div>
-          <div className="flex justify-between p-2 w-[80%] text-[#FFFFFF] font-bold text-xl">
-            <h1>Нүүр</h1>
-            <h1>Холбоо барих</h1>
-            <h1>Хоолны цэс</h1>
-            <h1>Үйлчилгээний нөхцөл</h1>
-            <h1>Хүргэлтийн бүс</h1>
-            <h1>Нууцлалын бодлого</h1>
+          <div className="flex justify-between w-[80%] text-[#FFFFFF] font-bold text-xl">
+            <button>Нүүр</button>
+            <button>Холбоо барих</button>
+            <button>Хоолны цэс</button>
+            <button>Үйлчилгээний нөхцөл</button>
+            <button>Хүргэлтийн бүс</button>
+            <button>Нууцлалын бодлого</button>
           </div>
           <div>
             <img src="./social.svg" alt="" width={200} />
