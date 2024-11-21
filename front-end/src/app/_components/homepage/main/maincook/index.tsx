@@ -2,7 +2,7 @@ import { Cookcard } from "../../cards/salesmenu";
 import { Arrowright } from "../../svg/arrowright";
 import { Staricon } from "../../svg/starIcon";
 
-export const Main = () => {
+export const Mainsales = () => {
   return (
     <div className="w-[80%] h-auto flex flex-col justify-center items-center gap-6">
       <div className="w-full flex justify-between py-6">

@@ -1,5 +1,4 @@
 import { Dessertcart } from "../../cards/dessert";
-import { Salad } from "../../cards/salad";
 import { Arrowright } from "../../svg/arrowright";
 import { Staricon } from "../../svg/starIcon";
 
@@ -17,6 +16,9 @@ export const Dessert = () => {
         </div>
       </div>
       <div className="w-full grid grid-cols-4 gap-6">
+        <Dessertcart />
+        <Dessertcart />
+        <Dessertcart />
         <Dessertcart />
       </div>
     </div>
