@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 const connectionstring =
-  "mongodb+srv://monhbayr2400:M1n11muu@cluster0.9rtw4.mongodb.net/";
+  "mongodb+srv://ace12d192:wap3TZLOZeJlgLIq@cluster0.s6jvj.mongodb.net/";
 
 const connectDb = async () => {
   const client = new MongoClient(connectionstring);
