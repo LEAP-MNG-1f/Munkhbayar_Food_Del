@@ -17,8 +17,11 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     padding: theme.spacing(1),
   },
 }));
+type CustomizedDialogsProps = {
+  text?: string;
+};
 
-export const CustomizedDialogs = () => {
+export const CustomizedDialogs = (props: CustomizedDialogsProps) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -32,7 +35,7 @@ export const CustomizedDialogs = () => {
     <React.Fragment>
       <button onClick={handleClickOpen} className="flex text-black gap-2">
         <ShoppingCartIcon />
-        <div className="flex justify-center items-center"> Сагс</div>
+        <div className="flex justify-center items-center">{props.text}</div>
       </button>
       <BootstrapDialog
         onClose={handleClose}

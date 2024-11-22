@@ -3,6 +3,7 @@ import cors from "cors";
 // import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 import connectDb from "./connectDB.js";
+import { ObjectId } from "mongodb";
 
 dotenv.config();
 
@@ -34,11 +35,54 @@ server.use(cors());
 server.get("/", async (request, response) => {
   const db = await connectDb();
 
-  let collection = db.collection("users");
-  let result = await collection.findOne().limit(10).toArray();
-
+  let collection = db.collection("product");
+  let result = await collection.find().toArray();
   response.json({
     success: true,
+    result: result,
+  });
+});
+server.post("/create", async (request, response) => {
+  const db = await connectDb();
+
+  let collection = db.collection("product");
+  let result = await collection.insertOne({
+    name: "huushuur",
+    email: "monhbayr@gmail.com",
+    price: "190000",
+  });
+  response.json({
+    success: true,
+    data: result,
+  });
+});
+server.put("/update", async (req, response) => {
+  const db = await connectDb();
+
+  let collection = db.collection("product");
+  let result = await collection.findOneAndUpdate(
+    {
+      _id: new ObjectId("67400203726b16fc4e9b2006"),
+    },
+    {
+      $set: { price: "8800", date: new Date() },
+    }
+  );
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
+server.delete("/delete", async (req, res) => {
+  const db = await connectDb();
+
+  let collection = db.collection("product");
+  let result = await collection.deleteOne({
+    _id: new ObjectId("67400203726b16fc4e9b2006"),
+  });
+  res.json({
+    succes: true,
     data: result,
   });
 });

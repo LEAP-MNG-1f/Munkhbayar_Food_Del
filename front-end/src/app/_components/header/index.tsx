@@ -36,7 +36,7 @@ export const Header = () => {
               </div>
               <div className="flex justify-center items-center gap-3 font-medium ">
                 <div className="flex justify-center items-center gap-3 hover:bg-slate-100 py-2 px-4 rounded-xl">
-                  <CustomizedDialogs />
+                  Сагс
                 </div>
                 <div className="flex justify-center items-center gap-3 hover:bg-slate-100 py-2 px-4 rounded-xl">
                   <img src="./vector1.svg" alt="" />
