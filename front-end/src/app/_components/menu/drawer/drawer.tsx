@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { Littlebox } from "../littlebox/littlebox";
 
@@ -27,32 +28,45 @@ export const AnchorTemporaryDrawer = () => {
     };
 
   const list = (anchor: Anchor) => (
-    <Box
+    <div
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      className="flex h-full"
     >
-      <List className="w-[500px] h-full flex">
-        <div className="w-full flex flex-col justify-between items-center">
-          <div className="w-full h-full flex flex-col justify-center items-center gap-3 px-6">
+      <div className="w-[800px] h-full flex flex-col justify-center items-center p-4">
+        <div className="flex h-full w-full flex-col justify-between">
+          <div className="flex flex-col items-center gap-3 px-6">
             <div className="font-bold p-5 text-xl">Таны сагс</div>
-            <div className="border-[1px] border-black w-full"></div>
-            <div className="flex w-full">
-              <Littlebox />
-            </div>
-            <div className="border-[1px] border-black w-full"></div>
           </div>
-          <div className="flex w-full"></div>
+          <div className="flex flex-col w-full h-full gap-3">
+            <div className="border-[1px] border-[#D6D8DB] w-full"></div>
+            <Littlebox />
+            <div className="border-[1px] border-[#D6D8DB] w-full"></div>
+          </div>
+          <div className="flex w-full h-[5%] justify-center items-center p-2">
+            <div className="w-[40%] h-full flex flex-col justify-center">
+              <h1 className="text-[#5E6166]">Нийт төлөх дүн</h1>
+              <h2 className="font-bold">34,800₮</h2>
+            </div>
+            <button className="w-[40%] h-full flex justify-center items-center rounded-md bg-[#18BA51] text-[white] font-normal">
+              Захиалах
+            </button>
+          </div>
         </div>
-      </List>
-    </Box>
+      </div>
+    </div>
   );
 
   return (
     <div>
       {(["right"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <button onClick={toggleDrawer(anchor, true)} className="text-black">
+          <button
+            onClick={toggleDrawer(anchor, true)}
+            className="text-black flex justify-center items-center gap-3"
+          >
+            <ShoppingCartIcon />
             Сагс
           </button>
           <Drawer
