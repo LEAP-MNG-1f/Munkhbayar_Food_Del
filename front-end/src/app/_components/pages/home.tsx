@@ -7,7 +7,7 @@ import { Mainsalad } from "../homepage/main/salad";
 
 export const Homepage = () => {
   return (
-    <main className="flex flex-col w-screen h-full gap-[100px] justify-center items-center pb-[100px]">
+    <main className="flex flex-col w-screen h-full gap-[50px] justify-center items-center pb-[100px]">
       <Greentwo />
       <FastDelivery />
       <Mainsales />
