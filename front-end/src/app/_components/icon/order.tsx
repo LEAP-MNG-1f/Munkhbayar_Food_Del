@@ -38,6 +38,8 @@ export const CustomizedDialogs = (props: CustomizedDialogsProps) => {
         <div className="flex justify-center items-center">{props.text}</div>
       </button>
       <BootstrapDialog
+        maxWidth="md"
+        fullWidth
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}

@@ -1,3 +1,4 @@
+import { Dessertcart } from "../../cards/dessert";
 import { Salad } from "../../cards/salad";
 import { Arrowright } from "../../svg/arrowright";
 import { Staricon } from "../../svg/starIcon";
@@ -16,10 +17,7 @@ export const Mainsalad = () => {
         </div>
       </div>
       <div className="w-full grid grid-cols-4 gap-6">
-        <Salad />
-        <Salad />
-        <Salad />
-        <Salad />
+        <Dessertcart text="Сэндвич" price={14800} img="./salad.png" />
       </div>
     </div>
   );
