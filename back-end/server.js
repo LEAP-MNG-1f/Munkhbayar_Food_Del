@@ -5,7 +5,7 @@ import { userRouter } from "./routes/userRoute.js";
 import { orderRouter } from "./routes/orderRoute.js";
 
 mongoose.connect(
-  "mongodb+srv://monhbayr2400:M1n11muu@cluster0.9rtw4.mongodb.net/"
+  "mongodb+srv://monhbayr2400:M1n11muu@cluster0.9rtw4.mongodb.net/Food_Delivery"
 );
 
 const server = express();
