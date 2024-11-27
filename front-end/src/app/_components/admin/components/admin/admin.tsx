@@ -1,28 +1,22 @@
 "use client";
 import { AdminAddCart } from "../addcart/addcart";
 import { Admincart } from "../cart/cart";
+import { ResponsiveDialog } from "../createcart/createcart";
 import { SelectAdmin } from "../select/select";
 
 export const Adminpage = () => {
   const arr = Array(12).fill(null);
   return (
     <div className="flex w-[80%] h-auto py-4 gap-7">
-      <div className="flex flex-col w-[10%] h-full gap-[40px]">
+      <div className="flex flex-col w-[15%] h-full gap-[40px]">
         <div className="w-full text-[24px] font-bold">Food menu</div>
         <div className="flex flex-col items-start w-full h-auto gap-4 ">
           <SelectAdmin text="Breakfast" />
           <SelectAdmin text="Soup" />
           <SelectAdmin text="Main course" />
           <SelectAdmin text="Desserts" />
-          <div className="flex w-full border-2 rounded-md justify-center items-center">
-            <div className="flex justify-center items-center p-1 text-[#5E6166] ">
-              +
-            </div>
-            <input
-              type="text"
-              placeholder="Create new category"
-              className="flex justify-center items-center"
-            />
+          <div className="flex w-full h-auto">
+            <ResponsiveDialog />
           </div>
         </div>
       </div>

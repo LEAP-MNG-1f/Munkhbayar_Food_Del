@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDb from "./connectDB.js";
 import { ObjectId } from "mongodb";
-import userRouter from "./routes/userRoute.js";
+import { userRouter, orderRouter } from "./routes/index.js";
 
 dotenv.config();
 
@@ -15,6 +15,7 @@ server.use(express.json());
 server.use(cors());
 
 server.use("/api", userRouter);
+server.use("/api", orderRouter);
 
 // server.post("/image", async (request, response) => {
 //   try {

@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import animeModel from "./model/users.js";
-import userRouter from "./routes/userRoute.js";
+import { userRouter } from "./routes/userRoute.js";
+import { orderRouter } from "./routes/orderRoute.js";
 
 mongoose.connect(
   "mongodb+srv://monhbayr2400:M1n11muu@cluster0.9rtw4.mongodb.net/"
@@ -14,6 +14,7 @@ const PORT = 4000;
 server.use(cors());
 
 server.use("/api", userRouter);
+server.use("/api", orderRouter);
 
 // server.post("/create", async (req, res) => {
 //   const result = await animeModel.create({
