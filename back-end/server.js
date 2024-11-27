@@ -3,6 +3,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/userRoute.js";
 import { orderRouter } from "./routes/orderRoute.js";
+import { foodRouter } from "./routes/foodRoute.js";
+import { categoryRouter } from "./routes/categoryRoute.js";
 
 mongoose.connect(
   "mongodb+srv://monhbayr2400:M1n11muu@cluster0.9rtw4.mongodb.net/Food_Delivery"
@@ -15,6 +17,8 @@ server.use(cors());
 
 server.use("/api", userRouter);
 server.use("/api", orderRouter);
+server.use("/api", foodRouter);
+server.use("/api", categoryRouter);
 
 // server.post("/create", async (req, res) => {
 //   const result = await animeModel.create({

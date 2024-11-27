@@ -1,4 +1,4 @@
-import { User } from "../model/index.js";
+import { User } from "../model/user.js";
 
 const createUser = async (req, res) => {
   const result = await User.create({
@@ -8,8 +8,6 @@ const createUser = async (req, res) => {
     phoneNumber: 99334455,
   });
 
-  console.log(result);
-
   res.json({
     success: true,
     data: result,
@@ -18,7 +16,7 @@ const createUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   const result = await User.find();
-  console.log(result);
+
   res.json({
     success: true,
     data: result,
