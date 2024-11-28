@@ -9,8 +9,9 @@ const processEnum = {
 
 const orderSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.SchemaType.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
+    require: true,
   },
   orderNumber: {
     type: Number,
@@ -18,7 +19,7 @@ const orderSchema = new mongoose.Schema({
   },
   foodIds: [
     {
-      type: mongoose.SchemaType.ObjectId,
+      type: mongoose.SchemaTypes.ObjectId,
       ref: "Food",
     },
   ],
@@ -41,7 +42,7 @@ const orderSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  Horoo: {
+  khoroo: {
     type: String,
     require: true,
   },
