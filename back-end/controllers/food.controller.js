@@ -1,13 +1,13 @@
 import { Food } from "../model/food.js";
-
+import groupBy from "lodash";
 const createFood = async (req, res) => {
   const result = await Food.create({
-    name: "Cake",
+    name: "Хуушуур",
     image:
-      "https://www.ucsf.edu/sites/default/files/2019-09/vegetables-cooking-food.jpg",
-    ingredient: "tums",
-    price: 5000,
-    categoryId: "6747c2edc2d7bc2253bf4ea6",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCIJ8IqTiu0CKwheN5TfJ-nHA5YJtF_J7xvg&s",
+    ingredient: "dadada",
+    price: 10000,
+    categoryId: "67488bdcfbf8dda01af866ce",
   });
 
   res.json({
@@ -18,10 +18,13 @@ const createFood = async (req, res) => {
 
 const getAllFoods = async (req, res) => {
   const result = await Food.find().populate("categoryId");
+  console.log("result:", result);
+  const groupedData = groupBy(result, (food) => food.categoryId.name);
+  console.log("grouped data:", groupedData);
 
   res.json({
     success: true,
-    data: result,
+    data: groupedData,
   });
 };
 
