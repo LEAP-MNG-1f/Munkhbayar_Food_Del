@@ -2,12 +2,12 @@ import { Food } from "../model/food.js";
 
 const createFood = async (req, res) => {
   const result = await Food.create({
-    name: "cake",
+    name: "Cake",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXx7wMoMXa6NSuAeFVoJfVTHNm2MfO9NlC1w&s",
-    ingredient: "Хулуу, төмс, лууван , сонгино, цөцгийн тос, самрын үр  ",
+      "https://www.ucsf.edu/sites/default/files/2019-09/vegetables-cooking-food.jpg",
+    ingredient: "tums",
     price: 5000,
-    categoryId: "",
+    categoryId: "6747c2edc2d7bc2253bf4ea6",
   });
 
   res.json({
@@ -17,13 +17,14 @@ const createFood = async (req, res) => {
 };
 
 const getAllFoods = async (req, res) => {
-  const result = await Order.find().populate("Food");
-  console.log(result);
+  const result = await Food.find().populate("categoryId");
+
   res.json({
     success: true,
     data: result,
   });
 };
+
 const deleteFood = async (request, response) => {
   const result = await Food.findByIdAndRemove({
     _id: "",
