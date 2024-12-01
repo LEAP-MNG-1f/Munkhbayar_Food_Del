@@ -7,15 +7,15 @@ import { Cookscard } from "../menu/cookscard/cook.cart";
 const categories = [
   {
     _id: 1,
-    name: "Европ хоол",
-  },
-  {
-    _id: 2,
     name: "Монгол хоол",
   },
   {
+    _id: 2,
+    name: "Хятад хоол",
+  },
+  {
     _id: 3,
-    name: "Ази хоол",
+    name: "Солонгос хоол",
   },
   {
     _id: 4,
