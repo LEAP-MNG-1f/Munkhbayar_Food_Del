@@ -18,7 +18,8 @@ const createOrder = async (req, res) => {
 };
 
 const getAllOrders = async (req, res) => {
-  const result = await Order.find().populate("userId", "foodIds");
+  const result = await Order.find().populate("userId").populate("foodIds");
+  console.log(result);
 
   res.json({
     success: true,
