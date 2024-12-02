@@ -1,8 +1,6 @@
 import { Category } from "../model/Category.js";
 const createCategory = async (req, res) => {
-  const result = await Category.create({
-    name: "Уух зүйлс",
-  });
+  const result = await Category.create(req.body);
   res.json({
     success: true,
     data: result,

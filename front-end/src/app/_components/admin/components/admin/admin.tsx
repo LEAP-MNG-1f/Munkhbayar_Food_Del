@@ -3,12 +3,23 @@ import { useEffect, useState } from "react";
 import { AdminAddCart } from "../addcart/addcart";
 import { ResponsiveDialog } from "../createcart/createcart";
 import { SelectAdmin } from "../select/select";
-import { groupBy } from "lodash";
+import { categoryDatas } from "../datatype/datatype";
 
-import { TProduct } from "@/app/_components/homepage/main.cart/main.cart";
+type AdminSideBarProps = {
+  categoryDatas?: categoryDatas[];
+};
 
-export const Adminpage = () => {
-  
+export const Adminpage = ({ categoryDatas }: AdminSideBarProps) => {
+  const [focus, setFocus] = useState("6746aa0bc4b0fe49cd307e72");
+  console.log("");
+
+  const handelClikFocus = (button: string | undefined) => {
+    if (button !== undefined) {
+      setFocus(button);
+    } else {
+      // console.log("Утга байхгүй байна.");
+    }
+  };
   // const [adminfoods, setAdminFoods] = useState<TProduct[]>([]);
   // useEffect(() => {
   //   async function getFoods() {
@@ -30,7 +41,20 @@ export const Adminpage = () => {
       <div className="flex flex-col w-[20%] h-auto gap-[40px]">
         <div className="w-full text-[24px] font-bold">Food menu</div>
         <div className="flex flex-col items-start w-full h-auto gap-4 ">
-          <SelectAdmin text="Breakfast" />
+          {categoryDatas?.map((categoryData) => {
+            return (
+              <button
+                key={categoryData._id}
+                onClick={() => handelClikFocus(categoryData?._id)}
+              >
+                <SelectAdmin
+                  text={categoryData?.name}
+                  focus={focus}
+                  buttonName={categoryData?._id}
+                />
+              </button>
+            );
+          })}
           <div className="flex w-full h-auto">
             <ResponsiveDialog />
           </div>
