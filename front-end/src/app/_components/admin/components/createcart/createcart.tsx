@@ -1,19 +1,23 @@
+"use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import { FC, useRef } from "react";
 
-export const ResponsiveDialog = () => {
+type CategoryValues = {
+  name: string;
+};
+
+export const ResponsiveDialog: FC = () => {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const BACKEND_ENDPOINT = process.env.NEXT_PUBLIC_BACKEND_URL;
+  try{ }catch(error)
 
   const handleClickOpen = () => {
     setOpen(true);

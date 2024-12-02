@@ -1,7 +1,7 @@
 type CookcartProps = {
-  text: string;
-  price: number;
-  img: string;
+  text?: string;
+  price?: number;
+  img?: string;
 };
 
 export const Admincart = (props: CookcartProps) => {

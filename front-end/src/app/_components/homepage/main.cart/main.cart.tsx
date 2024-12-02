@@ -3,7 +3,7 @@ import { Dessertcart } from "../cards/dessert";
 import { Arrowright } from "../svg/arrowright";
 import { Staricon } from "../svg/starIcon";
 
-type TProduct = {
+export type TProduct = {
   _id: string;
   name: string;
   image: string;
@@ -13,13 +13,13 @@ type TProduct = {
     name: string;
     __v: number;
   };
-  ingredient: string;
-  __v: number;
+  // ingredient: string;
+  // __v: number;
 };
 type TMainCartProps = {
-  foodDatas: TProduct[];
-  text: string;
-  allin: string;
+  foodDatas?: TProduct[];
+  text?: string;
+  allin?: string;
 };
 
 export const MainCart = ({ foodDatas, text, allin }: TMainCartProps) => {
@@ -39,8 +39,9 @@ export const MainCart = ({ foodDatas, text, allin }: TMainCartProps) => {
         {foodDatas?.map((foodData) => {
           return (
             <Dessertcart
+              key="index"
               text={foodData?.name}
-              price={14800}
+              price={foodData.price}
               img={foodData?.image}
             />
           );
