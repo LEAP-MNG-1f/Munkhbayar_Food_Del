@@ -11,6 +11,9 @@ export const Header = () => {
   const Homepage = () => {
     router.push("/");
   };
+  const Login = () => {
+    router.push("/login");
+  };
   return (
     <div className="w-screen h-full">
       <div className="m-auto">
@@ -41,7 +44,12 @@ export const Header = () => {
                 </div>
                 <div className="flex justify-center items-center gap-3 hover:bg-slate-100 py-2 px-4 rounded-xl">
                   <img src="./vector1.svg" alt="" />
-                  <h1 className="flex justify-center items-center">Нэвтрэх</h1>
+                  <button
+                    onClick={Login}
+                    className="flex justify-center items-center"
+                  >
+                    Нэвтрэх
+                  </button>
                 </div>
               </div>
             </div>

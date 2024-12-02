@@ -3,6 +3,14 @@ type SelectAdminProps = {
 };
 
 export const SelectAdmin = (props: SelectAdminProps) => {
+  // const BACKEND_ENDPOINT = process.env.NEXT_PUBLIC_BACKEND_URL;
+  // try {
+  //   const res = await fetch(`$(BACKEND_ENDPOINT)/categories`,{
+
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
   return (
     <button className="w-full flex justify-between items-center border rounded-md p-2 hover:bg-[#18BA51] font-medium">
       <h1>{props.text}</h1>
