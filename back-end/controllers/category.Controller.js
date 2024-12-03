@@ -1,6 +1,7 @@
 import { Category } from "../model/Category.js";
 const createCategory = async (req, res) => {
   const result = await Category.create(req.body);
+  const data = result.data
   res.json({
     success: true,
     data: result,
