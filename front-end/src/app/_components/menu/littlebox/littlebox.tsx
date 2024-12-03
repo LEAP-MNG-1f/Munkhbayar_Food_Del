@@ -4,6 +4,16 @@ import { useState } from "react";
 
 export const Littlebox = () => {
   const [number, setNumber] = useState(0);
+
+  const numberconstincrease = () => {
+    setNumber(number + 1);
+  };
+  const constdecrease = () => {
+    if (number > 0) {
+      setNumber(number - 1);
+    }
+  };
+
   return (
     <div className="flex w-full p-4 gap-3">
       <div className="flex w-full h-full">
@@ -23,21 +33,21 @@ export const Littlebox = () => {
           Хулуу, төмс, лууван, сонгино, цөцгийн тос, самрын үр{" "}
         </div>
         <div className="flex w-[50%] justify-between items-end">
-          <button className="flex rounded-md w-[40px] bg-[#18BA51] text-[white] text-[25px]">
+          <div className="flex rounded-md w-[40px] bg-[#18BA51] text-[white] text-[25px]">
             <button
               className="w-full h-full flex justify-center items-center"
-              onClick={() => setNumber(number + 1)}
+              onClick={numberconstincrease}
             >
               +
             </button>
-          </button>
+          </div>
           <div className="flex justify-center items-center h-full">
             {number}
           </div>
 
           <button
             className="flex justify-center items-center w-[40px] rounded-md bg-[#18BA51] text-[white] text-[25px]"
-            onClick={() => setNumber(number - 1)}
+            onClick={constdecrease}
           >
             -
           </button>
