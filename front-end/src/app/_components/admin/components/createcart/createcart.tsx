@@ -5,58 +5,51 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
-import { useFormik } from "formik";
-import { useState } from "react";
-
-type CategoryValuesType = {
-  name?: string;
-};
+import { useEffect, useState } from "react";
 
 export const ResponsiveDialog = () => {
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const [categories, setCategories] = useState([]);
+  const [newCategory, setNewCategory] = useState("");
   const BACKEND_ENDPOINT = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  const formik = useFormik<CategoryValuesType>({
-    initialValues: {
-      name: "",
-    },
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-    onSubmit: async (values) => {
-      const requestData = {
-        ...values,
-      };
-      const option = {
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch(`${BACKEND_ENDPOINT}/categories`);
+      const data = await response.json();
+      setCategories(data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  const addCategory = async (e) => {
+    e.preventDefault();
+    if (!newCategory.trim()) return;
+
+    try {
+      const response = await fetch(`${BACKEND_ENDPOINT}/categories`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestData),
-      };
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: newCategory }),
+      });
 
-      try {
-        const response = await fetch(
-          `${BACKEND_ENDPOINT}/api/categories`,
-          option
-        );
-        const data = await response.json();
-
-        if (!response.ok)
-          throw new Error(`HTTP error! status: ${response.status}`);
-      } catch (error) {
-        console.error(error);
+      if (response.ok) {
+        const addedCategory = await response.json();
+        setCategories((prev) => [...prev, addedCategory]); 
+        setNewCategory(""); 
       }
-    },
-  });
-
-  const handleClickOpen = () => {
-    setOpen(true);
+    } catch (error) {
+      console.error("Error adding category:", error);
+    }
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <>
@@ -70,14 +63,17 @@ export const ResponsiveDialog = () => {
         </button>
       </div>
       <Dialog
-        fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
         <div className="flex flex-col justify-between items-center w-[500px] h-auto gap-5">
-          <form action="" onSubmit={formik.handleChange}>
-            <div className="flex justify-evenly items-center w-full h-auto border p-5">
+          <form
+            onSubmit={addCategory}
+            action=""
+            className="flex flex-col items-center justify-between w-full h-[300px] p-2"
+          >
+            <div className="flex justify-evenly items-center w-full h-full p-5">
               <CloseIcon className="hover:bg-slate-300 rounded-sm " />
               <h1 className="flex justify-center items-center font-bold text-2xl w-[80%]">
                 Create food
@@ -85,25 +81,22 @@ export const ResponsiveDialog = () => {
               <div className="text-[#E0E0E0]">.</div>
             </div>
 
-            <div className="flex flex-col w-full h-auto gap-2 px-8">
+            <div className="flex flex-col w-full h-full gap-2 px-8">
               <h1>Category name</h1>
               <input
                 id="name"
                 type="text"
                 name="name"
                 placeholder="Placeholder"
-                className="rounded-md border p-3 bg-[#F4F4F4]"
-                value={formik.values.name}
-                onChange={formik.handleChange}
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                className=" w-full rounded-md border p-3 bg-[#F4F4F4]"
               />
             </div>
 
-            <div className="flex justify-end items-center w-full h-[10%] py-6 border">
+            <div className="flex justify-end items-center w-full h-full py-6 ">
               <div className="flex justify-end w-full gap-4 px-6">
-                <button
-                  onClick={() => formik.resetForm()}
-                  className="flex justify-center items-center p-2 font-semibold rounded-md"
-                >
+                <button className="flex justify-center items-center p-2 font-semibold rounded-md">
                   Clear
                 </button>
                 <button className="flex justify-center items-center py-2 px-4 border bg-black text-white rounded-lg font-bold">
