@@ -11,7 +11,6 @@ type AdminSideBarProps = {
 
 export const Adminpage = ({ categoryDatas }: AdminSideBarProps) => {
   const [focus, setFocus] = useState("6746aa0bc4b0fe49cd307e72");
-  console.log("");
 
   const handelClikFocus = (button: string | undefined) => {
     if (button !== undefined) {
