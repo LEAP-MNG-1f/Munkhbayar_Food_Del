@@ -13,7 +13,9 @@ export type foodData = {
 };
 
 export type categoryDatas = {
-  _id?: string | undefined;
+  _id?: string;
   name?: string;
   __v?: number;
 };
+
+export type categoryDelete = (id?: string | undefined) => void;
