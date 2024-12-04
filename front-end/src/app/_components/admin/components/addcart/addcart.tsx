@@ -7,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 
 export const AdminAddCart = () => {
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };

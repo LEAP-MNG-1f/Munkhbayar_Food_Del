@@ -16,7 +16,7 @@ export const Adminpage = () => {
         );
         const data = await response.json();
         if (data.success && Array.isArray(data.data)) {
-          setCategories(data.data); // Категориудыг state-д хадгална
+          setCategories(data.data);
         } else {
           console.error("Категориудын формат буруу:", data);
         }
@@ -49,6 +49,41 @@ export const Adminpage = () => {
       console.error("Error deleting category:", error);
     }
   };
+  const editCategory = async (
+    id: string,
+    updatedData: Partial<categoryDatas>
+  ) => {
+    console.log("Category засварлах, ID:", id, "Өгөгдөл:", updatedData);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/categories/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedData),
+        }
+      );
+
+      if (response.ok) {
+        const updatedCategory = await response.json();
+        console.log("Амжилттай засварласан:", updatedCategory);
+        setCategories((prevCategories) =>
+          prevCategories.map((category) =>
+            category._id === id ? updatedCategory.data : category
+          )
+        );
+      } else {
+        const errorData = await response.json();
+        console.error(
+          "Category засварлахад алдаа гарлаа:",
+          response.status,
+          errorData
+        );
+      }
+    } catch (error) {
+      console.error("Category засварлахад алдаа гарлаа:", error);
+    }
+  };
 
   return (
     <div className="flex w-[80%] h-auto py-[100px] gap-7">
@@ -58,6 +93,7 @@ export const Adminpage = () => {
           <SelectAdmin
             categories={categories}
             deleteCategory={deleteCategory}
+            editCategory={editCategory}
           />
 
           <div className="flex w-full h-auto">

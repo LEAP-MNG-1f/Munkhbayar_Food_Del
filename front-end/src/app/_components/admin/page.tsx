@@ -11,9 +11,8 @@ export const RealAdminPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/categories`);
+      const response = await fetch(`BACKEND_END_POINT/categories`);
       const result = await response.json();
-      console.log("ihyimgygutg", result);
 
       setCategoryDatas(result.data);
     } catch (error) {
@@ -24,5 +23,5 @@ export const RealAdminPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  return <Adminpage categoryDatas={categoryDatas} />;
+  return <Adminpage />;
 };
