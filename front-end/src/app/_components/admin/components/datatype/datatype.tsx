@@ -1,4 +1,5 @@
-export type foodData = {
+export type foodDatas = {
+  img: string | undefined;
   _id?: string;
   name?: string;
   image?: string;

@@ -3,32 +3,52 @@ import { useEffect, useState } from "react";
 import { AdminAddCart } from "../addcart/addcart";
 import { ResponsiveDialog } from "../createcart/createcart";
 import { SelectAdmin } from "../select/select";
-import { categoryDatas } from "../datatype/datatype";
+import { categoryDatas, foodDatas } from "../datatype/datatype";
+import { Dessertcart } from "@/app/_components/homepage/cards/dessert";
 
 export const Adminpage = () => {
   const [categories, setCategories] = useState<categoryDatas[]>([]);
+  const [foods, setFood] = useState<foodDatas[]>([]);
+
+  const fetchFood = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/foods`
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        setFood(data.data);
+      } else {
+        console.error(data);
+      }
+      console.log("data irelee", data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`
+      );
+      const data = await response.json();
+      if (data.success && Array.isArray(data.data)) {
+        setCategories(data.data);
+      } else {
+        console.error(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`
-        );
-        const data = await response.json();
-        if (data.success && Array.isArray(data.data)) {
-          setCategories(data.data);
-        } else {
-          console.error("Категориудын формат буруу:", data);
-        }
-      } catch (error) {
-        console.error("Категориуд авахад алдаа гарлаа:", error);
-      }
-    };
-
     fetchCategories();
+    fetchFood();
   }, []);
+
   const deleteCategory = async (id: string) => {
-    console.log("Deleting category with ID:", id);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/categories/${id}`,
@@ -41,9 +61,8 @@ export const Adminpage = () => {
         setCategories((prevCategories) =>
           prevCategories.filter((category) => category._id !== id)
         );
-        console.log("Category ID to delete:", id);
       } else {
-        console.error("Failed to delete category:", response.status);
+        console.error(response.status);
       }
     } catch (error) {
       console.error("Error deleting category:", error);
@@ -53,7 +72,6 @@ export const Adminpage = () => {
     id: string,
     updatedData: Partial<categoryDatas>
   ) => {
-    console.log("Category засварлах, ID:", id, "Өгөгдөл:", updatedData);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/categories/${id}`,
@@ -66,7 +84,7 @@ export const Adminpage = () => {
 
       if (response.ok) {
         const updatedCategory = await response.json();
-        console.log("Амжилттай засварласан:", updatedCategory);
+        console.log(updatedCategory);
         setCategories((prevCategories) =>
           prevCategories.map((category) =>
             category._id === id ? updatedCategory.data : category
@@ -74,14 +92,10 @@ export const Adminpage = () => {
         );
       } else {
         const errorData = await response.json();
-        console.error(
-          "Category засварлахад алдаа гарлаа:",
-          response.status,
-          errorData
-        );
+        console.error(response.status, errorData);
       }
     } catch (error) {
-      console.error("Category засварлахад алдаа гарлаа:", error);
+      console.error(error);
     }
   };
 
@@ -105,9 +119,20 @@ export const Adminpage = () => {
       <div className="w-full h-auto flex flex-col gap-4 pl-[50px]">
         <div className="flex justify-between w-full">
           <div className="text-[24px] font-bold">Breakfast</div>
-          <AdminAddCart />
+          <AdminAddCart foodData={foods} />
         </div>
-        <div className="grid grid-cols-4 grid-rows-4 w-full h-full gap-3"></div>
+        <div className="grid grid-cols-4 grid-rows-4 w-full h-full gap-3">
+          {foods?.map((food) => {
+            return (
+              <Dessertcart
+                key="index"
+                text={food.name}
+                price={food.price}
+                img={food.img}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

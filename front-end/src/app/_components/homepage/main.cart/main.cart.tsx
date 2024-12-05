@@ -1,5 +1,4 @@
 import { Dessertcart } from "../cards/dessert";
-
 import { Arrowright } from "../svg/arrowright";
 import { Staricon } from "../svg/starIcon";
 

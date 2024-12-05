@@ -7,7 +7,7 @@ import { MainCart } from "../homepage/main.cart/main.cart";
 import { groupBy } from "lodash";
 import { TProduct } from "../homepage/main.cart/main.cart";
 
-export type food = {
+type food = {
   _id?: string;
   name?: string;
   image?: string;
