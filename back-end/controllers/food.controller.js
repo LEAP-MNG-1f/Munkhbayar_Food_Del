@@ -8,7 +8,7 @@ const createFood = async (req, res) => {
       "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Cujwan.JPG/1200px-Cujwan.JPG",
     ingredient: "Давс, .... , .... , ...., ",
     price: 12000,
-    categoryId: "67488bca2be77968473a9eb7",
+    categoryId: "67511af671257d726c433504",
   });
 
   res.json({

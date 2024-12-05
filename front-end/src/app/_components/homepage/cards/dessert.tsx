@@ -1,24 +1,24 @@
 import { CustomizedDialogs } from "../../icon/order";
 
-type CookcartProps = {
-  text: string;
-  price: number;
-  img: string;
+export type CookcartProps = {
+  text: string | undefined;
+  price: string | undefined;
+  img: string | undefined;
 };
 
-export const Dessertcart = (props: CookcartProps) => {
+export const Dessertcart = ({ text, price, img }: CookcartProps) => {
   return (
     <div className="flex flex-col w-full gap-6">
       <div className="flex justify-center items-center">
-        <img src={props.img} className="flex rounded-xl w-full h-[300px]" />
+        <img src={img} className="flex rounded-xl w-full h-[300px]" />
       </div>
       <div>
         <h1 className="font-bold text-xl flex justify-between items-center">
-          {props.text}
+          {text}
           <CustomizedDialogs />
         </h1>
         <div className="flex gap-3 font-medium text-[#18BA51]">
-          <h1>{props.price}</h1>
+          <h1>{price}</h1>
         </div>
       </div>
     </div>

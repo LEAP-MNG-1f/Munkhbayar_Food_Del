@@ -4,10 +4,14 @@ import Dialog from "@mui/material/Dialog";
 
 import { ColorSwitches } from "../switch/switch";
 import CloseIcon from "@mui/icons-material/Close";
+import { foodDatas } from "../datatype/datatype";
 
-export const AdminAddCart = () => {
+type AdminAddCartProps = {
+  foodData: foodDatas[];
+};
+
+export const AdminAddCart = ({ foodData }: AdminAddCartProps) => {
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
